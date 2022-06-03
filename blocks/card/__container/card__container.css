@@ -1,0 +1,19 @@
+.card__container {
+  width: 86%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 0 0 21px;
+}
+
+@media screen and (max-width: 881px) {
+  .card__container {
+  padding-bottom: 31px;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .card__container {
+  padding-bottom: 0;
+  }
+}

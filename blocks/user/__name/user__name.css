@@ -1,0 +1,10 @@
+.user__name {
+  font-weight: 500;
+  font-size: calc(27px + 15*(100vw - 320px)/960);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 520px;
+}
+

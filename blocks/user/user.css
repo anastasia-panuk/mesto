@@ -1,0 +1,14 @@
+.user {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@media screen and (max-width: 880px) {
+  .user {
+  width: 90%;
+  align-self: center;
+  flex-direction: column;
+  }
+}

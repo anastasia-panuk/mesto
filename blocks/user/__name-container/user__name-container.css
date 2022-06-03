@@ -1,0 +1,12 @@
+.user__name-container {
+  display: flex;
+  column-gap: 18px;
+  align-items: baseline;
+}
+
+@media screen and (max-width: 880px) {
+  .user__name-container {
+    column-gap: 10px;
+    max-width: 282px;
+  }
+}

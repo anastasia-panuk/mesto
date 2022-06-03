@@ -1,0 +1,5 @@
+.footer__copyright {
+  color: #545454;
+  font-size: calc(14px + 4*(100vw - 320px)/960);
+  margin: 0;
+}

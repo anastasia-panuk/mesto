@@ -1,0 +1,15 @@
+.user__profile {
+  font-weight: 400;
+  font-size: calc(14px + 4*(100vw - 320px)/960);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 520px;
+}
+
+@media screen and (max-width: 880px) {
+  .user__profile {
+    max-width: 282px;
+  }
+}
