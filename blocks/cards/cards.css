@@ -4,11 +4,13 @@
   gap: 20px 17px;
   align-self: center;
   width: 100%;
-  padding-top: 50px;
+  padding: 50px 0 0 0;
   color: #000;
+  list-style: none;
+  margin: 0;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 950px) {
   .cards {
   width: 90%;
   padding-top: 36px;

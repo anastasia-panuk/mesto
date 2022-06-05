@@ -7,9 +7,9 @@
   padding-left: 30px;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 950px) {
   .user__container {
-    padding: 26px 0 36px;
+    padding: 26px 0 26px;
     align-items: center;
     row-gap: 14px;
   }

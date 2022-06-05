@@ -5,7 +5,7 @@
   align-items: center;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 950px) {
   .user {
   width: 90%;
   align-self: center;

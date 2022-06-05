@@ -5,6 +5,11 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  max-width: 520px;
+  max-width: 480px;
 }
 
+@media screen and (max-width: 600px) {
+  .user__name-container {
+    font-size: 27px;
+  }
+}
