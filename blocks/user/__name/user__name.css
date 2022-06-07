@@ -13,5 +13,6 @@
     font-size: 27px;
     text-align: center;
     padding-left: 28px;
+    max-width: 282px;
   }
 }
