@@ -11,20 +11,8 @@
   }
 }
 
-@media screen and (max-width: 600px) {
-  .user__name-container {
-    max-width: 400px;
-  }
-}
-
 @media screen and (max-width: 475px) {
   .user__name-container {
     max-width: 90%;
-  }
-}
-
-@media screen and (max-width: 321px) {
-  .user__name-container {
-    font-size: 27px;
   }
 }

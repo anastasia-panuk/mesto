@@ -1,6 +1,6 @@
 .user__profile {
   font-weight: 400;
-  font-size: calc(14px + 4*(100vw - 320px)/960);
+  font-size: 18px;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -8,14 +8,9 @@
   max-width: 480px;
 }
 
-@media screen and (max-width: 950px) {
+@media screen and (max-width: 600px) {
   .user__profile {
     max-width: 189px;
-  }
-}
-
-@media screen and (min-width: 1281px) {
-  .user__profile {
-    font-size: 18px;
+    font-size: 14px;
   }
 }

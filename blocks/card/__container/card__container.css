@@ -1,9 +1,8 @@
 .card__container {
-  width: 86%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 25px 0 0 21px;
+  padding: 25px 15px 31px 21px;
 }
 
 @media screen and (max-width: 881px) {

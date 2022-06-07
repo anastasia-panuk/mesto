@@ -1,6 +1,6 @@
 .user__name {
   font-weight: 500;
-  font-size: calc(27px + 15*(100vw - 320px)/960);
+  font-size: 42px;
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -9,7 +9,9 @@
 }
 
 @media screen and (max-width: 600px) {
-  .user__name-container {
+  .user__name {
     font-size: 27px;
+    text-align: center;
+    padding-left: 28px;
   }
 }

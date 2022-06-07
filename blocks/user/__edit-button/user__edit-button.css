@@ -2,12 +2,14 @@
   width: 24px;
   height: 24px;
   background-color: unset;
+  border: 0;
   background-image: url(../../../images/edit_button.svg);
   border: 1px solid #fff;
   background-position: center;
   background-repeat: no-repeat;
   cursor: pointer;
   outline: none;
+  transition: .2s;
 }
 
 @media screen and (max-width: 950px) {
@@ -19,4 +21,5 @@
 
 .user__edit-button:hover {
   opacity: .6;
+  transform: scale(1.05, 1.05);
 }
