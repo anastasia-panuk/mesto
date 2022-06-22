@@ -18,65 +18,24 @@
             <div class="user__container">
               <div class="user__name-container">
                 <h1 class="user__name">Жак-Ив Кусто</h1>
-                <button class="user__edit-button" type="button" aria-label="Редактировать профиль"></button>
+                <button class="user__edit-button popup__edit-button" type="button" aria-label="Редактировать профиль"></button>
               </div>
               <p class="user__profile">Исследователь океана</p>
             </div>
-            <button class="user__add-button" type="button" aria-label="Добавить фото"></button>
+            <button class="user__add-button popup__add-button" type="button" aria-label="Добавить фото"></button>
         </section>
-        <ul class="cards">
-          <li class="card">
-            <img class="card__image" src="./images/karachaevo.png" alt="Старинная церковь в горах">
-              <div class="card__container">
-                <h2 class="card__name">Карачаевск</h2>
-                <button class="card__like-button" type="button" aria-label="Лайк"></button>
-              </div>
-            </li>
-          <li class="card">
-            <img class="card__image" src="./images/elbrus.png" alt="Вид на Эльбрус">
-              <div class="card__container">
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button class="card__like-button" type="button" aria-label="Лайк"></button>
-              </div>
-            </li>
-          <li class="card">
-            <img class="card__image" src="./images/dombai.png" alt="Вид на горы">
-              <div class="card__container">
-                <h2 class="card__name">Домбай</h2>
-                <button class="card__like-button" type="button" aria-label="Лайк"></button>
-              </div>
-          </li>
-          <li class="card">
-            <img class="card__image" src="./images/elbrus.png" alt="Вид на Эльбрус">
-              <div class="card__container">
-                <h2 class="card__name">Гора Эльбрус</h2>
-                <button class="card__like-button" type="button" aria-label="Лайк"></button>
-              </div>
-            </li>
-          <li class="card">
-            <img class="card__image" src="./images/dombai.png" alt="Вид на горы">
-              <div class="card__container">
-                <h2 class="card__name">Домбай</h2>
-                <button class="card__like-button" type="button" aria-label="Лайк"></button>
-              </div>
-            </li>
-          <li class="card">
-            <img class="card__image" src="./images/karachaevo.png" alt="Старинная церковь в горах">
-              <div class="card__container">
-                <h2 class="card__name">Карачаево-Черкесия</h2>
-                <button class="card__like-button" type="button" aria-label="Лайк"></button>
-              </div>
-            </li>
+      <ul class="cards">
+
         </ul>
       </main>
       <footer class="footer">
         <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
       </footer>
 
-        <section class="popup">
+        <section class="popup popup_edit">
           <div class="popup__container">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form" name="popup__form">
+            <form class="popup__form edit-popup-form" name="popup__form">
               <h2 class="popup__title">Редактировать профиль</h2>
                 <input class="popup__input" id="popup__user-name" type="text" value="" name="popup__user-name" placeholder="Как вас зовут?">
                 <input class="popup__input" id="popup__user-profile" type="text" value="" name="popup__user-profile" placeholder="Расскажите о себе">
@@ -84,6 +43,39 @@
             </form>
           </div>
         </section>
+
+        <section class="popup popup_add-new-place">
+          <div class="popup__container">
+            <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+            <form class="popup__form new-place-popup-form" name="popup__form">
+              <h2 class="popup__title">Новое место</h2>
+                <input class="popup__input" id="popup__place-name" type="text" value="" name="popup__place-name" placeholder="Название">
+                <input class="popup__input" id="popup__place-link" type="text" value="" name="popup__place-link" placeholder="Ссылка на картинку">
+              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="popup popup_photo-view">
+         <div class="popup__container popup__container_image">
+            <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
+            <figure class="popup__figure">
+              <img class="popup__image" src="#" alt="#">
+              <figcaption class="popup__figcaption"></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <template class="template-card">
+          <li class="card">
+            <button class="card__trash-button" name="card__trash-button" type="button" aria-label="Корзина"></button>
+            <img class="card__image" src="#" alt="#">
+              <div class="card__container">
+                <h2 class="card__name"></h2>
+                <button class="card__like-button" name="card__like-button" type="button" aria-label="Лайк"></button>
+              </div>
+          </li>
+      </template>
 
         <script src="./scripts/script.js"></script>
 </body>
