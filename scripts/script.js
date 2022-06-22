@@ -2,8 +2,8 @@ const editPopup = document.querySelector('.popup_edit');
 const newPlacePopup = document.querySelector('.popup_add-new-place');
 const imageZoomPopup = document.querySelector('.popup_photo-view');
 
-const popupEditBtn = document.querySelector('.popup__edit-button');
-const popupAddBtn = document.querySelector('.popup__add-button');
+const popupEditBtn = document.querySelector('.user__edit-button');
+const popupAddBtn = document.querySelector('.user__add-button');
 
 const popupCloseButton = document.querySelectorAll('.popup__close-button');
 
