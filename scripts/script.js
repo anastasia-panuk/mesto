@@ -5,8 +5,6 @@ const imageZoomPopup = document.querySelector('.popup_photo-view');
 const popupEditBtn = document.querySelector('.user__edit-button');
 const popupAddBtn = document.querySelector('.user__add-button');
 
-const popupCloseButton = document.querySelectorAll('.popup__close-button');
-
 const popupEditForm = document.querySelector('.edit-popup-form');
 const popupAddNewPlaceForm = document.querySelector('.new-place-popup-form');
 
@@ -28,6 +26,7 @@ const cardImageCaption = document.querySelector('.popup__figcaption');
 function openPopup(popup) {
   if(popup.classList.contains('popup'))
   popup.classList.add('popup_opened');
+  hideErrorAtOpenForm(config, input)
 }
 
 function closePopup(popup) {
@@ -73,7 +72,6 @@ function createCard(card) {
 
   initialCards.forEach(renderCard);
 
-
   function renderNewCard(evt){
   evt.preventDefault();
     const card = {};
@@ -87,28 +85,51 @@ function createCard(card) {
   popupAddNewPlaceForm.addEventListener('submit', renderNewCard);
 
  const closeEditPopupButton = editPopup.querySelector('.popup__close-button');
- closeEditPopupButton.addEventListener('click', () => closePopup(editPopup));
+ closeEditPopupButton.addEventListener('click', () => {
+  closePopup(editPopup)
+});
 
  const closeNewPlacePopupButton = newPlacePopup.querySelector('.popup__close-button');
- closeNewPlacePopupButton.addEventListener('click', () => closePopup(newPlacePopup))
+ closeNewPlacePopupButton.addEventListener('click', () => {
+  closePopup(newPlacePopup)
+});
 
  const closeImageZoomPopupButton = imageZoomPopup.querySelector('.popup__close-button');
- closeImageZoomPopupButton.addEventListener('click', () => closePopup(imageZoomPopup))
+ closeImageZoomPopupButton.addEventListener('click', () => {closePopup(imageZoomPopup)})
 
 
-  function closePopupByOverlay(evt) {
-    if(evt.target.classList.contains('popup_edit')) {
-      closePopup(editPopup);
-  } else if(evt.target.classList.contains('popup_add-new-place')) {
-     closePopup(newPlacePopup);
-  } else if (evt.target.classList.contains('popup_photo-view')) {
-     closePopup(imageZoomPopup);
+ function closePopupByOverlay(evt) {
+  if(evt.target.classList.contains('popup'))
+    evt.target.classList.remove('popup_opened')
+ }
+
+editPopup.addEventListener('click', closePopupByOverlay);
+newPlacePopup.addEventListener('click', closePopupByOverlay);
+imageZoomPopup.addEventListener('click', closePopupByOverlay);
+
+const popups = document.querySelectorAll('.popup')
+const popupsContainer = document.querySelectorAll('.popup__container')
+
+
+popups.forEach(function(popupItem) {
+  popupItem.style.cursor = 'pointer'
+})
+
+popupsContainer.forEach(function(popupCont) {
+    popupCont.addEventListener('mouseover', function() {
+      popupCont.style.cursor = 'default'
+    })
+})
+
+ function closePopupByEsc(evt) {
+  popups.forEach(function(popupItem) {
+    if(evt.key === 'Escape') {
+      closePopup(popupItem);
+    }
+  })
   }
-  };
 
-  editPopup.addEventListener('click', closePopupByOverlay);
-  newPlacePopup.addEventListener('click', closePopupByOverlay);
-  imageZoomPopup.addEventListener('click', closePopupByOverlay);
+  document.addEventListener('keydown', closePopupByEsc)
 
   popupEditBtn.addEventListener('click', function submitInputValueToPopupForm() {
     popupUserName.value = userName.textContent;
@@ -124,3 +145,4 @@ function createCard(card) {
   }
 
    popupEditForm.addEventListener('submit', submitUserDataToServer);
+
