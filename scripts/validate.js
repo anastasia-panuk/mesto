@@ -29,13 +29,13 @@ const checkInputValidity = function (config, input) {
 }
 
 const hasInvalidInput = function (inputList) {
-  return inputList.some((input) => {
-    return !input.validity.valid;
+  return inputList.every((input) => {
+    return input.validity.valid;
   });
 };
 
 const toggleSubmitButton = function (config, inputList, btn) {
-  if(hasInvalidInput(inputList) === true) {
+  if(hasInvalidInput(inputList) !== true) {
     inactiveSubmitButton(config, btn)
   } else {
     activeSubmitButton(config, btn)
