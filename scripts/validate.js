@@ -70,5 +70,5 @@ enableValidation({
   inputErrorSelector: (item) => `.error-${item.name}`,
   inactiveButtonClass: 'popup__submit-button_inactive',
   inputErrorBorderClass: 'popup__input_error',
-  errorTextClass: 'popup__input_span',
+  errorTextClass: 'popup__input-span',
 });
