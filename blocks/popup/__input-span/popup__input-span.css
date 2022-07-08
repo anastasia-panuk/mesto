@@ -1,4 +1,7 @@
 .popup__input-span {
+  position: absolute;
+  top: 30px;
+  left: 0;
   color: #FF0000;
   font-style: normal;
   font-weight: 400;

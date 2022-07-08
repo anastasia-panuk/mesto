@@ -8,36 +8,38 @@ const enableValidation = function (config) {
   })
 }
 
-const showError = function(config, input, errorText) {
-const errorMessageText = document.querySelector(config.inputErrorSelector(input));
+const showError = function(config, form, input, errorText) {
+  const errorMessageText = form.querySelector(config.inputErrorSelector(input));
   input.classList.add(config.inputErrorBorderClass)
   errorMessageText.textContent = errorText;
   }
 
-const hideError = function(config, input) {
-  const errorMessageText = document.querySelector(config.inputErrorSelector(input));
-    input.classList.remove(config.inputErrorBorderClass)
-    errorMessageText.textContent = '';
-  }
-
-const checkInputValidity = function (config, input) {
-  if(!input.validity.valid) {
-    showError(config, input, input.validationMessage)
-  } else {
-    hideError(config, input)
-  }
+const hideError = function(config, form, input) {
+  const errorMessageText = form.querySelector(config.inputErrorSelector(input));
+  input.classList.remove(config.inputErrorBorderClass)
+  errorMessageText.textContent = '';
 }
 
+  const checkInputValidity = function (config, form, input) {
+    if(!input.validity.valid) {
+    showError(config, form, input, input.validationMessage)
+    } else {
+    hideError(config, form, input)
+    }
+
+  }
+
 const hasInvalidInput = function (inputList) {
-  return inputList.every((input) => {
-    return input.validity.valid;
+  return inputList.some((input) => {
+    return !input.validity.valid;
   });
 };
 
 const toggleSubmitButton = function (config, inputList, btn) {
-  if(hasInvalidInput(inputList) !== true) {
+  if(hasInvalidInput(inputList) === true) {
     inactiveSubmitButton(config, btn)
-  } else {
+  }
+  else {
     activeSubmitButton(config, btn)
 }
 }
@@ -55,20 +57,29 @@ const inactiveSubmitButton = function(config, btn) {
 const setEventListeners = function (config, form) {
   const inputList = Array.from(form.querySelectorAll(config.inputSelector));
   const btn = form.querySelector(config.submitButtonSelector)
+  toggleSubmitButton(config, inputList, btn);
   inputList.forEach((input) => {
     input.addEventListener('input', function() {
-      checkInputValidity(config, input);
-      toggleSubmitButton(config, inputList, btn)
+      checkInputValidity(config, form, input);
+      toggleSubmitButton(config, inputList, btn);
     })
   })
 }
 
-enableValidation({
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-button',
-  inputErrorSelector: (item) => `.error-${item.name}`,
-  inactiveButtonClass: 'popup__submit-button_inactive',
-  inputErrorBorderClass: 'popup__input_error',
-  errorTextClass: 'popup__input-span',
-});
+function resetError(config, form) {
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+  const btn = form.querySelector(config.submitButtonSelector);
+  inputList.forEach(function (input) {
+    hideError(config, form, input)
+  });
+  toggleSubmitButton(config, inputList, btn);
+}
+
+function openedPopupValidation(config, form) {
+  const btn = form.querySelector(config.submitButtonSelector);
+  const inputList = Array.from(form.querySelectorAll(config.inputSelector));
+  inputList.forEach(function (input) {
+    checkInputValidity(config, form, input);
+  })
+  toggleSubmitButton(config, inputList, btn);
+}

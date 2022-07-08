@@ -12,7 +12,6 @@
   cursor: pointer;
   outline: none;
   transition: .2s;
-  margin-top: 48px;
 }
 
 .popup__submit-button:hover {

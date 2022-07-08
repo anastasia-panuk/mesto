@@ -35,13 +35,17 @@
         <section class="popup popup_edit">
           <div class="popup__container">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form edit-popup-form" name="popup__form" novalidate>
+            <form class="popup__form edit-popup-form" name="users-data-form" novalidate>
               <h2 class="popup__title">Редактировать профиль</h2>
+              <label class="popup__field">
                 <input class="popup__input" name="name-input" id="popup__user-name" type="text" value="" placeholder="Как вас зовут?" minlength="2" maxlength="40" required>
                 <span class="popup__input-span error-name-input"></span>
+              </label>
+              <label class="popup__field">
                 <input class="popup__input" name="profile-input" id="popup__user-profile" type="text" value="" placeholder="Расскажите о себе" minlength="2" maxlength="200" required>
                 <span class="popup__input-span error-profile-input"></span>
-              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+              </label>
+                <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
             </form>
           </div>
         </section>
@@ -49,13 +53,17 @@
         <section class="popup popup_add-new-place">
           <div class="popup__container">
             <button class="popup__close-button" type="button" aria-label="Закрыть"></button>
-            <form class="popup__form new-place-popup-form" name="popup__form" novalidate>
+            <form class="popup__form new-place-popup-form" name="new-place-form" novalidate>
               <h2 class="popup__title">Новое место</h2>
+              <label class="popup__field">
                 <input class="popup__input" name="place-name-input" id="popup__place-name" type="text" value="" placeholder="Название" minlength="2" maxlength="30" required>
                 <span class="popup__input-span error-place-name-input"></span>
+              </label>
+              <label class="popup__field">
                 <input class="popup__input" name="place-link-input" id="popup__place-link" type="url" value="" placeholder="Ссылка на картинку" required>
                 <span class="popup__input-span error-place-link-input"></span>
-              <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
+              </label>
+                <button class="popup__submit-button" type="submit" aria-label="Сохранить">Сохранить</button>
             </form>
           </div>
         </section>
