@@ -117,9 +117,6 @@ editPopup.addEventListener('mousedown', closePopupByOverlay);
 newPlacePopup.addEventListener('mousedown', closePopupByOverlay);
 imageZoomPopup.addEventListener('mousedown', closePopupByOverlay);
 
-const popups = document.querySelectorAll('.popup')
-const popupsContainer = document.querySelectorAll('.popup__container')
-
  function closePopupByEsc(evt) {
     if(evt.key === 'Escape') {
       const openedPopup = document.querySelector('.popup_opened')
