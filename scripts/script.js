@@ -23,14 +23,17 @@ const cardTemplate = document.querySelector('.template-card').content;
 const cardBigImage = document.querySelector('.popup__image');
 const cardImageCaption = document.querySelector('.popup__figcaption');
 
+const newPlaceSubmitButton = popupAddNewPlaceForm.querySelector('.popup__submit-button');
+const popupAddNewPlaceFormInputs = Array.from(popupAddNewPlaceForm.querySelectorAll('.popup__input'));
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keydown', closePopupByEsc)
-  openedPopupValidation(formsConfig, popupEditForm);
 }
 
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
+  document.removeEventListener('keydown', closePopupByEsc)
 }
 
 popupEditBtn.addEventListener('click', () => {
@@ -80,17 +83,14 @@ function createCard(card) {
 
   function renderNewCard(evt){
   evt.preventDefault();
-    const newPlaceSubmitButton = popupAddNewPlaceForm.querySelector('.popup__submit-button');
     const card = {};
     card.name = popupPlaceName.value;
     card.link = popupPlaceLink.value;
     renderCard(card);
     closePopup(newPlacePopup);
     popupAddNewPlaceForm.reset();
-    newPlaceSubmitButton.setAttribute('disabled', true)
+    toggleSubmitButton(formsConfig, popupAddNewPlaceFormInputs, newPlaceSubmitButton);
   }
-
-  const newPlaceSubmitButton = popupAddNewPlaceForm.querySelector('.popup__submit-button');
 
   popupAddNewPlaceForm.addEventListener('submit', renderNewCard);
 
@@ -121,17 +121,17 @@ const popups = document.querySelectorAll('.popup')
 const popupsContainer = document.querySelectorAll('.popup__container')
 
  function closePopupByEsc(evt) {
-  const openedPopup = document.querySelector('.popup_opened')
-    if(evt.key === 'Escape')
-    openedPopup.classList.remove('popup_opened')
-
-    document.removeEventListener('keydown', closePopupByEsc)
+    if(evt.key === 'Escape') {
+      const openedPopup = document.querySelector('.popup_opened')
+      closePopup(openedPopup)
+    }
   }
 
   popupEditBtn.addEventListener('click', function submitInputValueToPopupForm() {
     popupUserName.value = userName.textContent;
     popupUserProfile.value = userProfile.textContent;
-    openPopup(editPopup)
+    openedPopupValidation(formsConfig, popupEditForm);
+    openPopup(editPopup);
   });
 
   function submitUserDataToServer(evt) {
