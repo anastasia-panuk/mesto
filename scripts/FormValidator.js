@@ -11,7 +11,7 @@ class FormValidator {
       document.querySelectorAll(this._config.formSelector)
     );
     formList.forEach((form) => {
-      form.addEventListener("submit", (evt) => {
+      form.addEventListener('submit', (evt) => {
         evt.preventDefault();
       });
       this._setEventListeners();
@@ -24,11 +24,11 @@ class FormValidator {
       this._form.querySelectorAll(this._config.inputSelector)
     );
     const btn = this._form.querySelector(this._config.submitButtonSelector);
-    this._toggleSubmitButton(inputList, btn);
+    this.toggleSubmitButton(inputList, btn);
     inputList.forEach((input) => {
-      input.addEventListener("input", () => {
+      input.addEventListener('input', () => {
         this._checkInputValidity(input);
-        this._toggleSubmitButton(inputList, btn);
+        this.toggleSubmitButton(inputList, btn);
       });
     });
   }
@@ -48,7 +48,7 @@ class FormValidator {
       this._config.inputErrorSelector(input)
     );
     input.classList.remove(this._config.inputErrorBorderClass);
-    errorMessageText.textContent = "";
+    errorMessageText.textContent = '';
   }
 
   //функция проверки валидности форм
@@ -68,7 +68,7 @@ class FormValidator {
   }
 
   //функция переключения состояния кнопок отправки данных
-  _toggleSubmitButton(inputList, btn) {
+  toggleSubmitButton(inputList, btn) {
     if (this._hasInvalidInput(inputList) === true) {
       this._inactiveSubmitButton(btn);
     } else {
@@ -78,18 +78,18 @@ class FormValidator {
 
   //функция включающая активное состояние карточек
   _activeSubmitButton(btn) {
-    btn.removeAttribute("disabled");
+    btn.removeAttribute('disabled');
     btn.classList.remove(this._config.inactiveButtonClass);
   }
 
   //функция выключающая актичное состояние карточек
   _inactiveSubmitButton(btn) {
-    btn.setAttribute("disabled", true);
+    btn.setAttribute('disabled', true);
     btn.classList.add(this._config.inactiveButtonClass);
   }
 
   //функция сброса ошибок, срабатывающая при открытии попапов
-  _resetError() {
+  resetError() {
     const inputList = Array.from(
       this._form.querySelectorAll(this._config.inputSelector)
     );
@@ -97,11 +97,11 @@ class FormValidator {
     inputList.forEach((input) => {
       this._hideError(input);
     });
-    this._toggleSubmitButton(inputList, btn);
+    this.toggleSubmitButton(inputList, btn);
   }
 
   //функция валидации форм, срабатывающая при открытии попапов
-  _openedPopupValidation() {
+  openedPopupValidation() {
     const btn = this._form.querySelector(this._config.submitButtonSelector);
     const inputList = Array.from(
       this._form.querySelectorAll(this._config.inputSelector)
@@ -109,7 +109,7 @@ class FormValidator {
     inputList.forEach((input) => {
       this._checkInputValidity(input);
     });
-    this._toggleSubmitButton(inputList, btn);
+    this.toggleSubmitButton(inputList, btn);
   }
 }
 
