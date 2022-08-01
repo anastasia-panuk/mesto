@@ -1,5 +1,5 @@
   //импорт статичных переменных
-import { cardBigImage, cardImageCaption } from './index.js';
+import { cardBigImage, cardImageCaption } from './variablesAndFunctions.js';
 
 class Card {
   //конструктор карточки
@@ -11,6 +11,8 @@ class Card {
       .cloneNode(true);
     this._cardImage = this._card.querySelector('.card__image');
     this._cardTitle = this._card.querySelector('.card__name');
+    this._cardLikeBtn = this._card.querySelector('.card__like-button');
+    this._cardTrashBtn = this._card.querySelector('.card__trash-button');
     this._cardName = data.name;
     this._cardLink = data.link;
     this._openPopup = openPopup;
@@ -34,8 +36,8 @@ class Card {
   }
 
   //функция переключения состояния кнопки лайка
-  _handlerLikeButton(btn) {
-    btn.classList.toggle('card__like-button_active');
+  _handlerLikeButton() {
+    this._cardLikeBtn.classList.toggle('card__like-button_active');
   }
   // функция удаления карточки по клику на кнопку "Корзина"
   _deleteCardByButton() {
@@ -45,22 +47,18 @@ class Card {
 
   //установка слушателей события на кнопки "Лайк", "Корзина" и фото картчки
   _setEventListener() {
-    const likeBtn = this._card.querySelector('.card__like-button');
-
-    likeBtn.addEventListener('click', () => {
-      this._handlerLikeButton(likeBtn);
+    this._cardLikeBtn.addEventListener('click', () => {
+      this._handlerLikeButton();
     });
 
-    this._card
-      .querySelector('.card__trash-button')
-      .addEventListener('click', () => {
+    this._cardTrashBtn.addEventListener('click', () => {
         this._deleteCardByButton();
       });
 
     this._cardImage.addEventListener('click', () => {
-      cardBigImage.src = this._cardImage.src;
-      cardImageCaption.alt = this._cardImage.alt;
-      cardImageCaption.textContent = this._cardTitle.textContent;
+      cardBigImage.src = this._cardLink;
+      cardBigImage.alt = this._cardName;
+      cardImageCaption.textContent = this._cardName;
       this._openPopup();
     });
   }

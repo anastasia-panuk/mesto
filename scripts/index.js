@@ -19,22 +19,12 @@ const popupPlaceLink = document.querySelector('#popup__place-link');
 
 const cardsContainer = document.querySelector('.cards');
 
-const cardBigImage = document.querySelector('.popup__image');
-const cardImageCaption = document.querySelector('.popup__figcaption');
-
-const newPlaceSubmitButton = popupAddNewPlaceForm.querySelector(
-  '.popup__submit-button'
-);
-const popupAddNewPlaceFormInputs = Array.from(
-  popupAddNewPlaceForm.querySelectorAll('.popup__input')
-);
-
-// экспорт статичных переменных
-export { cardBigImage, cardImageCaption };
-
 //импорт модулей с массивом карточек и классом карточек
 import { Card } from './Card.js';
 import { initialCards } from './cardsArray.js';
+
+// импорт модуля FormValidator
+import { FormValidator } from './FormValidator.js';
 
 //функции открытия и закрытия попапов
 function openPopup(popup) {
@@ -53,7 +43,6 @@ function closePopup(popup) {
 
 //слушатели событий для открытия и закрытия попапов
 popupEditBtn.addEventListener('click', () => {
-  isPopupEditFormValid.resetError(); //вызов функции валидации при открытии попапа из модуля FormValidator.js
   openPopup(editPopup);
 });
 
@@ -86,10 +75,7 @@ function renderNewCard(evt) {
   renderCard(cardElement);
   closePopup(newPlacePopup);
   popupAddNewPlaceForm.reset();
-  isPopupEditFormValid.toggleSubmitButton(
-    popupAddNewPlaceFormInputs,
-    newPlaceSubmitButton
-  );
+  isPopupEditFormValid.toggleSubmitButton();
 }
 
 //слушатель сабмита, добавляющего новую карточку
@@ -137,7 +123,7 @@ function closePopupByEsc(evt) {
 popupEditBtn.addEventListener('click', function submitInputValueToPopupForm() {
   popupUserName.value = userName.textContent;
   popupUserProfile.value = userProfile.textContent;
-  isPopupEditFormValid.openedPopupValidation();
+  isPopupEditFormValid.resetError();
   openPopup(editPopup);
 });
 
@@ -162,9 +148,6 @@ const formsConfig = {
   inputErrorBorderClass: 'popup__input_error',
   errorTextClass: 'popup__input-span',
 };
-
-// импорт модуля FormValidator
-import { FormValidator } from './FormValidator.js';
 
 //создание новых экземпляров класса FormValidator
 const isPopupEditFormValid = new FormValidator(formsConfig, popupEditForm);
