@@ -2,10 +2,9 @@
 import './index.css'
 
 //импорт переменных
-import Section from '../scripts/components/Section.js';
+import Section from '../components/Section.js';
 import {
   initialCards,
-  cardsContainer,
   editPopup,
   newPlacePopup,
   popupEditBtn,
@@ -13,59 +12,63 @@ import {
   imageZoomPopup,
   popupAddNewPlaceForm,
   popupEditForm,
-  userName,
-  userProfile,
   formsConfig,
-} from '../scripts/utils/constants.js';
+  userNameInput,
+  userProfileInput
+} from '../utils/constants.js';
 
 //импорт модулей
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import Popup from '../scripts/components/Popup.js';
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
-import UserInfo from '../scripts/components/UserInfo.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 
-//создание экземпляров классов
-const editUserInfo = new Popup(editPopup);
 const userInfo = new UserInfo({
-  userNameSelector: userName,
-  userProfileSelector: userProfile,
+  userNameSelector: '.user__name',
+  userProfileSelector: '.user__profile',
 });
-const newPlaceCard = new Popup(newPlacePopup);
-const addNewPlaceForm = new PopupWithForm(newPlacePopup, {
+
+const editUserInfoPopup = new PopupWithForm(editPopup, {
   handleFormSubmit: (formData) => {
-    const newCard = new Card(formData, {
+      userInfo.setUserInfo(formData)
+}
+});
+
+const addNewPlacePopup = new PopupWithForm(newPlacePopup, {
+    handleFormSubmit: (formData) => {
+      createNewCard(formData)
+    },
+  });
+
+  const imageViewPopup = new PopupWithImage(imageZoomPopup);
+
+  function createNewCard(data) {
+    const newCard = new Card(data, {
       handleCardClick: () => {
-        const popupOpenCard = new PopupWithImage(imageZoomPopup, formData);
-        popupOpenCard.open();
-        popupOpenCard.setEventListeners();
+        imageViewPopup.open(data)
+        imageViewPopup.setEventListeners();
       },
       cardTemplateSelector: '.template-card',
     });
     const cardElement = newCard.createCard();
     cardsList.addCardToContainer(cardElement);
-  },
-});
+  }
 
-const cardsList = new Section(
-  {
-    items: initialCards,
-    renderer: (card) => {
-      const newCard = new Card(card, {
-        handleCardClick: () => {
-          const popup = new PopupWithImage(imageZoomPopup, card);
-          popup.open();
-          popup.setEventListeners();
+
+  const cardsList = new Section(
+      {
+        items: initialCards,
+        renderer: (card) => {
+          createNewCard(card)
         },
-        cardTemplateSelector: '.template-card',
-      });
-      const cardElement = newCard.createCard();
-      cardsList.addCardToContainer(cardElement);
-    },
-  },
-  cardsContainer
-);
+      },
+      '.cards'
+    );
+
+    //вызов функции открисовки карточек
+cardsList.renderCards();
+
 
 const isPopupEditFormValid = new FormValidator(formsConfig, popupEditForm);
 const isPopupAddNewPlaceFormValid = new FormValidator(
@@ -75,29 +78,24 @@ const isPopupAddNewPlaceFormValid = new FormValidator(
 
 //слушатели событий
 popupEditBtn.addEventListener('click', () => {
-  userInfo.getUserInfo();
+  const data = userInfo.getUserInfo()
+  userNameInput.value = data.user;
+  userProfileInput.value = data.profile;
   isPopupEditFormValid.resetError();
-  editUserInfo.open();
-});
-
-popupEditForm.addEventListener('submit', (evt) => {
-  userInfo.setUserInfo(evt);
-  editUserInfo.close();
+  editUserInfoPopup.open();
 });
 
 popupAddBtn.addEventListener('click', () => {
   isPopupAddNewPlaceFormValid.resetError();
-  newPlaceCard.open();
+  addNewPlacePopup.open();
 });
 
 //вызов функций установки слушателей для экземпляров классов
-editUserInfo.setEventListeners();
-newPlaceCard.setEventListeners();
-addNewPlaceForm.setEventListeners();
+editUserInfoPopup.setEventListeners();
+addNewPlacePopup.setEventListeners();
 
 //вызовы функции включения валидации в формах
 isPopupEditFormValid.enableValidation();
 isPopupAddNewPlaceFormValid.enableValidation();
 
-//вызов функции открисовки карточек
-cardsList.renderCards();
+
