@@ -25,17 +25,15 @@ export const initialCards = [
   },
 ];
 
-export const cardsContainer = document.querySelector('.cards');
-
-export const editPopup = document.querySelector('.popup_edit');
-export const newPlacePopup = document.querySelector('.popup_add-new-place');
+export const editPopup = document.querySelector('.popup_type_profile');
+export const newPlacePopup = document.querySelector('.popup_type_card-add');
 
 export const popupEditBtn = document.querySelector('.user__edit-button');
 export const popupAddBtn = document.querySelector('.user__add-button');
-export const imageZoomPopup = document.querySelector('.popup_photo-view');
+export const imageZoomPopup = document.querySelector('.popup_type_picture');
 
-export const popupPlaceName = document.querySelector('#popup__place-name');
-export const popupPlaceLink = document.querySelector('#popup__place-link');
+export const userNameInput = document.querySelector('#user');
+export const userProfileInput = document.querySelector('#profile')
 
 export const popupAddNewPlaceForm = document.querySelector(
   '.new-place-popup-form'
@@ -44,9 +42,6 @@ export const popupEditForm = document.querySelector('.edit-popup-form');
 
 export const cardBigImage = document.querySelector('.popup__image');
 export const cardImageCaption = document.querySelector('.popup__figcaption');
-
-export const userName = document.querySelector('.user__name');
-export const userProfile = document.querySelector('.user__profile');
 
 export const formsConfig = {
   formSelector: '.popup__form',

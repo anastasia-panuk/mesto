@@ -14,12 +14,12 @@ export default class Card {
     this._handleCardClick = handleCardClick;
   }
 
-  _getTemplateCard() {
-    return this._card;
-  }
+  // _getTemplateCard() {
+  //   return this._card;
+  // }
 
   createCard() {
-    this._card = this._getTemplateCard();
+    //this._card = this._getTemplateCard();
     this._setEventListener();
 
     this._cardImage.src = this._cardLink;
