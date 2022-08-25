@@ -11,7 +11,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  z-index: 2;
+  z-index: 3;
   opacity: 0;
   visibility: hidden;
   transition: opacity 0.5s, visibility 0s linear 0.5s;
