@@ -1,44 +1,25 @@
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    name: 'Иваново',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    name: 'Камчатка',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  },
-];
-
 export const editPopup = document.querySelector('.popup_type_profile');
 export const newPlacePopup = document.querySelector('.popup_type_card-add');
+export const newAvatarPopup = document.querySelector('.popup_type_user-avatar');
+export const deleteCardPopup = document.querySelector('.popup_type_detite-card');
 
 export const popupEditBtn = document.querySelector('.user__edit-button');
 export const popupAddBtn = document.querySelector('.user__add-button');
+export const popupAvatarEditButtn = document.querySelector('.user__avatar-edit-button');
+
 export const imageZoomPopup = document.querySelector('.popup_type_picture');
 
-export const userNameInput = document.querySelector('#user');
-export const userProfileInput = document.querySelector('#profile')
+export const thashButton = document.querySelector('.card__trash-button')
+
+export const userNameInput = document.getElementById('user');
+export const userProfileInput = document.getElementById('profile')
 
 export const popupAddNewPlaceForm = document.querySelector(
   '.new-place-popup-form'
 );
 export const popupEditForm = document.querySelector('.edit-popup-form');
+
+export const popupEditUserAvatarForm = document.querySelector('.new-user-avatar-form')
 
 export const cardBigImage = document.querySelector('.popup__image');
 export const cardImageCaption = document.querySelector('.popup__figcaption');
