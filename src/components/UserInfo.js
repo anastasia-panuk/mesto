@@ -9,16 +9,20 @@ export default class UserInfo {
     return {
       user: this._userNameSelector.textContent,
       profile: this._userProfileSelector.textContent,
-      avatar: this._userAvatarSelector.src
-    }
+      avatar: this._userAvatarSelector.src,
+    };
   }
 
   setUserAvatar(userData) {
-    this._userAvatarSelector.src = userData.avatar;
+    if(userData.avatar) {
+      this._userAvatarSelector.src = userData.avatar;
+    }
   }
 
   setUserInfo(userData) {
+    if(userData.name && userData.about) {
     this._userNameSelector.textContent = userData.name;
     this._userProfileSelector.textContent = userData.about;
+    }
   }
 }
