@@ -10,7 +10,9 @@
 @import url(../blocks/content/content.css);
 
 @import url(../blocks/user/user.css);
+@import url(../blocks/user/__avatar/user__avatar.css);
 @import url(../blocks/user/__image/user__image.css);
+@import url(../blocks/user/__avatar-edit-button/user__avatar-edit-button.css);
 @import url(../blocks/user/__add-button/user__add-button.css);
 @import url(../blocks/user/__container/user__container.css);
 @import url(../blocks/user/__name-container/user__name-container.css);
@@ -24,7 +26,9 @@
 @import url(../blocks/card/__image/card__image.css);
 @import url(../blocks/card/__container/card__container.css);
 @import url(../blocks/card/__name/card__name.css);
+@import url(../blocks/card/__like-container/card__like-container.css);
 @import url(../blocks/card/__like-button/card__like-button.css);
+@import url(../blocks/card/__like-counter/card__like-counter.css);
 @import url(../blocks/card/__like-button/_active/card__like-button_active.css);
 @import url(../blocks/card/__trash-button/card__trash-button.css);
 
