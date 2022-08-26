@@ -44,7 +44,7 @@ const userInfo = new UserInfo({
   userAvatarSelector: userConfig.userAvatarSelector,
 });
 
-const newCard = function createNewCard(data) {
+const createCard = function createNewCard(data) {
   const card = new Card(data, {
     handleCardClick: () => {
       imageViewPopup.open(data);
@@ -66,7 +66,7 @@ const newCard = function createNewCard(data) {
 const cardsList = new Section(
   {
     renderer: (card) => {
-      addCardToDOM(newCard(card));
+      addCardToDOM(createCard(card));
     },
   },
   cardsSelector
@@ -78,7 +78,7 @@ const popupAddCard = new PopupWithForm(newPlacePopup, {
     api
       .addNewCard(formData)
       .then((res) => {
-        addCardToDOM(newCard(res));
+        addCardToDOM(createCard(res));
         popupAddCard.close();
       })
       .catch((err) => console.log(err))
