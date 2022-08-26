@@ -41,4 +41,6 @@ export const userConfig = {
   userAvatarSelector: '.user__image',
 }
 
-export const cardsSelector = '.cards'
+export const cardsSelector = '.cards';
+
+export const cardTemplateSelector = '.template-card';

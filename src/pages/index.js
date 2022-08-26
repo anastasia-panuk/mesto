@@ -17,6 +17,7 @@ import {
   userNameInput,
   userProfileInput,
   userConfig,
+  cardTemplateSelector,
   cardsSelector
 } from '../utils/constants.js';
 
@@ -48,7 +49,7 @@ const newCard = function createNewCard(data) {
     handleCardClick: () => {
       imageViewPopup.open(data);
     },
-    cardTemplateSelector: '.template-card',
+    cardTemplateSelector: cardTemplateSelector,
     userId: userId,
     addLike: (data) => {
       return api.addCardLike(data).catch((err) => console.log(err));
