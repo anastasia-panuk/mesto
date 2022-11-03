@@ -24,5 +24,5 @@ Mesto  - сервис по обмену фотографиями.
 * GRID
 * Webpack
 
-### Ссылка на страницу:
+### Ссылка
 https://anastasia-panuk.github.io/mesto/
