@@ -78,7 +78,7 @@ export default class Api {
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json',
-      }
+      },
     }).then((res) => this._requestResult(res));
   }
 
@@ -88,7 +88,7 @@ export default class Api {
       headers: {
         authorization: this._token,
         'Content-Type': 'application/json',
-      }
+      },
     }).then((res) => this._requestResult(res));
   }
 
@@ -97,8 +97,8 @@ export default class Api {
       method: 'DELETE',
       headers: {
         authorization: this._token,
-        'Content-Type': 'application/json'
-      }
-    }).then(res => this._requestResult(res))
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => this._requestResult(res));
   }
 }
