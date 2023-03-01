@@ -33,7 +33,7 @@ Mesto - сервис по обмену фотографиями.
 - Webpack
 
 ### Запуск проекта
-
+git clone https://github.com/anastasia-panuk/mesto.git
 npm run build — сборка проекта<br />
 npm run dev — запуск в режиме разработки
 
